@@ -30,6 +30,11 @@ public class GeneralMatrix extends Matrix {
      */
     public GeneralMatrix(int m, int n) throws MatrixException {
         // You need to fill in this method.
+        super(m,n);
+        if (m<= 0 || n<= 0) {
+            throw new MatrixException("Dimensions cannot be less than 1!");
+        }
+        this.data = new double[m][n];
     }
 
     /**
@@ -40,6 +45,13 @@ public class GeneralMatrix extends Matrix {
      */
     public GeneralMatrix(GeneralMatrix A) {
         // You need to fill in this method.
+        super(A.m,A.n);
+        this.data = new double[A.m][A.n];
+        for (int i = 0; i <A.m; i++) {
+            for (int j =0; j <A.n; j++) {
+                this.data[i][j] = A.getIJ(i, j);
+            }
+        }
     }
     
     /**
@@ -51,6 +63,10 @@ public class GeneralMatrix extends Matrix {
      */
     public double getIJ(int i, int j) {
         // You need to fill in this method.
+        if (i < 0 || j < 0 || this.m <= i || this.n <= j) {
+            throw new MatrixException("Matrix out of bounds");
+        }
+        return this.data[i][j];
     }
     
     /**
@@ -62,6 +78,10 @@ public class GeneralMatrix extends Matrix {
      */
     public void setIJ(int i, int j, double val) {
         // You need to fill in this method.
+        if (i < 0 || j < 0 || this.m <= i || this.n <= j) {
+            throw new MatrixException("Matrix out of bounds");
+        }
+        this.data[i][j] = val;
     }
     
     /**
@@ -71,6 +91,14 @@ public class GeneralMatrix extends Matrix {
      */
     public double determinant() {
         // You need to fill in this method.
+        if (this.n != this.m) throw new MatrixException("Matrix is not a square!");
+        double[] sv = new double[1];
+        GeneralMatrix A = this.decomp(sv);
+        double det = 1;
+        for (int i =0; i< A.n; i++) {
+            det *= A.getIJ(i, i);
+        }
+        return det * sv[0];
     }
 
     /**
@@ -81,6 +109,15 @@ public class GeneralMatrix extends Matrix {
      */
     public Matrix add(Matrix A) {
         // You need to fill in this method.
+        if (A.m != this.m || A.n != this.n) throw new MatrixException("Matrix dimensions do not agree");
+        GeneralMatrix mat = new GeneralMatrix(this.m, this.n);
+        for (int i = 0; i <this.m; i++) {
+            for (int j =0; j < this.n; j++) {
+                double val = this.getIJ(i, j) + A.getIJ(i, j);
+                mat.setIJ(i, j, val);
+            }
+        }
+        return mat;
     }
     
     /**
@@ -92,6 +129,18 @@ public class GeneralMatrix extends Matrix {
      */
     public Matrix multiply(Matrix A) {
         // You need to fill in this method.
+        if (this.n != A.m) throw new MatrixException("Matrix dimensions do not agree");
+        GeneralMatrix mat = new GeneralMatrix(this.m, A.n);
+        for (int i = 0; i < this.m; i++) {
+            for (int j = 0; j < A.n; j++) {
+                double val = 0;
+                for (int k = 0; k <this.n; k++) {
+                    val += this.getIJ(i,k) * A.getIJ(k,j);
+                }
+                mat.setIJ(i, j, val);
+            }
+        }
+        return mat;
     }
 
     /**
@@ -102,6 +151,13 @@ public class GeneralMatrix extends Matrix {
      */
     public Matrix multiply(double a) {
         // You need to fill in this method.
+        GeneralMatrix mat = new GeneralMatrix (this.m, this.n);
+        for (int i=0; i < this.m; i++) {
+            for (int j = 0; j <this.n; j++) {
+                mat.setIJ(i,j,a * this.getIJ(i, j));
+            }
+        }
+        return mat;
     }
 
 
@@ -111,6 +167,11 @@ public class GeneralMatrix extends Matrix {
      */
     public void random() {
         // You need to fill in this method.
+        for (int i=0; i < this.m; i++) {
+            for (int j = 0; j <this.n; j++) {
+                this.setIJ(i, j, Math.random());
+            }
+        }
     }
 
     /**
@@ -206,6 +267,122 @@ public class GeneralMatrix extends Matrix {
      * Your tester function should go here.
      */
     public static void main(String[] args) {
-        // You need to fill in this method.
-    }
+		
+		//3 x 3 Matrix
+		GeneralMatrix M = new GeneralMatrix(3,3);
+		M.setIJ(0,0,6.8);
+		M.setIJ(0,1,1);
+		M.setIJ(0,2,3.1);
+		M.setIJ(1,0,-66);
+		M.setIJ(1,1,5);
+		M.setIJ(1,2,22);
+		M.setIJ(2,0,5);
+		M.setIJ(2,1,-5);
+		M.setIJ(2,2,-5);
+		
+		
+		
+		//5 x 5 Matrix
+		GeneralMatrix M2 = new GeneralMatrix(5,5);
+		M2.setIJ(0,0,6.8);
+		M2.setIJ(0,1,110);
+		M2.setIJ(0,2,3.1);
+		M2.setIJ(0,3,3.3);
+		M2.setIJ(0,4,33.333);
+		M2.setIJ(1,0,-66.333);
+		M2.setIJ(1,1,5);
+		M2.setIJ(1,2,22);
+		M2.setIJ(1,3,3.1);
+		M2.setIJ(1,4,3.23);
+		M2.setIJ(2,0,501);
+		M2.setIJ(2,1,-125);
+		M2.setIJ(2,2,5);
+		M2.setIJ(2,3,-39.1);
+		M2.setIJ(2,4,3.12);
+		M2.setIJ(3,0,5);
+		M2.setIJ(3,1,-15);
+		M2.setIJ(3,2,-15);
+		M2.setIJ(3,3,-329.1);
+		M2.setIJ(3,4,3.12);
+		M2.setIJ(4,0,1231);
+		M2.setIJ(4,1,-25);
+		M2.setIJ(4,2,-50);
+		M2.setIJ(4,3,-39.1);
+		M2.setIJ(4,4,3.12);
+		
+		GeneralMatrix M3 = new GeneralMatrix(3,3);
+		/*M.setIJ(0,0,67);
+		M.setIJ(0,1,18);
+		M.setIJ(0,2,5);
+		M.setIJ(1,0,0.2);
+		M.setIJ(1,1,-10);
+		M.setIJ(1,2,-0.19);
+		M.setIJ(2,0,48);
+		M.setIJ(2,1,100);
+		M.setIJ(2,2,-2);*/
+		
+		M3.setIJ(0,0,12);
+		M3.setIJ(0,1,-2);
+		M3.setIJ(0,2,1.19);
+		M3.setIJ(1,0,0.99);
+		M3.setIJ(1,1,1.31);
+		M3.setIJ(1,2,0.1);
+		M3.setIJ(2,0,-10);
+		M3.setIJ(2,1,-9.4);
+		M3.setIJ(2,2,-3);
+		
+		Matrix M_ADD_M3 = M.add(M3);
+		Matrix M3_ADD_M = M3.add(M);
+		Matrix M_MULT_M3 = M.multiply(M3);
+		Matrix M3_MULT_M = M3.multiply(M);
+		Matrix XM = M.multiply(5);
+		
+		
+		
+		System.out.println("----------------------------------------");
+		System.out.println("M.toString() and M.determinant()");
+		System.out.println();
+		System.out.println(M.toString());
+		System.out.println("Determinant:" + M.determinant());
+		System.out.println("----------------------------------------");
+		System.out.println("M2.toString() and M2.determinant()");
+		System.out.println();
+		System.out.println(M2.toString());
+		System.out.println("Determinant:" + M2.determinant());
+		System.out.println("----------------------------------------");
+		System.out.println("M3.toString() and M3.determinant()");
+		System.out.println();
+		System.out.println(M3.toString());
+		System.out.println("Determinant:" + M3.determinant());
+		System.out.println("----------------------------------------");
+		System.out.println("M + M3");
+		System.out.println();
+		System.out.println(M_ADD_M3.toString());
+		System.out.println();
+		System.out.println("M3 + M");
+		System.out.println(M3_ADD_M.toString());
+		System.out.println("----------------------------------------");
+		System.out.println("M * M3");
+		System.out.println();
+		System.out.println(M_MULT_M3.toString());
+		System.out.println();
+		System.out.println("M3 * M");
+		System.out.println();
+		System.out.println(M3_MULT_M.toString());
+		System.out.println("5M");
+		System.out.println();
+		System.out.println(XM.toString());
+		System.out.println("----------------------------------------");
+		System.out.println("Rand");
+		M.random();
+		System.out.println(M.toString());
+		System.out.println("----------------------------------------");
+		System.out.println("Empty");
+		GeneralMatrix EMPTY = new GeneralMatrix(2,1);
+		System.out.println(EMPTY.toString());
+		//EMPTY.setIJ(0,1,12);
+		//System.out.println(EMPTY.determinant());
+		
+		
+	}
 }

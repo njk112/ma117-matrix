@@ -44,6 +44,14 @@ public abstract class Matrix {
      */
     public String toString() {
         // You need to fill in this method.
+        String newString = "";
+        for (int i = 0; i < this.m; i++) {
+            for (int j = 0; j < this.n; j++) {
+                newString += String.format("%6.3f", this.getIJ(i, j));
+            }
+            newString +="\n";
+        }
+        return newString;
     }
     
     /**
