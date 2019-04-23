@@ -1,5 +1,5 @@
 /*
- * PROJECT III: GeneralMatrix.java
+ * PROJECT III: GeneralMatrix.java -- naglis
  *
  * This file contains a template for the class GeneralMatrix. Not all methods
  * are implemented. Make sure you have carefully read the project formulation

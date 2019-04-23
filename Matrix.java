@@ -1,5 +1,5 @@
 /*
- * PROJECT III: Matrix.java
+ * PROJECT III: Matrix.java -- naglis 
  *
  * This file contains a template for the class Matrix. Not all methods are
  * implemented. Make sure you have carefully read the project formulation
@@ -39,7 +39,7 @@ public abstract class Matrix {
      * Returns a String representation of the Matrix using the getIJ getter
      * function. You should use MaF.dF to format the double numbers to a
      * sensible number of decimal places and place the numbers in columns.
-     *
+    
      * @return A String representation of the Matrix.
      */
     public String toString() {

@@ -1,5 +1,5 @@
 /*
- * PROJECT III: Project3.java
+ * PROJECT III: Project3.java -- naglis
  *
  * This file contains a template for the class Project3. None of methods are
  * implemented. Make sure you have carefully read the project formulation
@@ -26,7 +26,18 @@ public class Project3 {
      */
     public static double matVariance(Matrix m, int numSamples) {
         // You need to fill in this method.
-    }
+        double sum = 0;
+    	double sum1 = 0;
+		for (int i = 0; i < numSamples; i++) {
+			m.random();
+			double det = m.determinant();
+			sum += det;
+			sum1 += Math.pow(det,2);
+		}
+		double var = sum1/numSamples - Math.pow(sum/numSamples,2);
+		return var;
+		
+	}
     
     /**
      * This function should calculate the variances of matrices for matrices
@@ -34,5 +45,12 @@ public class Project3 {
      */
     public static void main(String[] args) {
         // You need to fill in this method.
+        for (int n = 2; n <= 50; n++) {
+        	GeneralMatrix M1 = new GeneralMatrix(n,n);
+        	TriMatrix M2 = new TriMatrix(n);
+        	double var1 = matVariance(M1,15000);
+        	double var2 = matVariance(M2,150000); 
+        	System.out.println(n + " " + var1 + " " + var2);
+        }
     }
 }
