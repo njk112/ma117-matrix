@@ -218,106 +218,88 @@ public class TriMatrix extends Matrix {
      */
     public static void main(String[] args) {
         // You need to fill in this method.
-        TriMatrix M1= new TriMatrix(3);
-    			M1.setIJ(0,0,1);
-    			M1.setIJ(0,1,2);
-
-    			M1.setIJ(1,0,3);
-    			M1.setIJ(1,1,4);
-    			M1.setIJ(1,2,25);
-
-    			M1.setIJ(2,1,-15);
-    			M1.setIJ(2,2,-61);
-    			    			
     			//5 x 5 Matrix
-    			TriMatrix M2 = new TriMatrix(5);
-    			M2.setIJ(0,0,3);
-    			M2.setIJ(0,1,12);
+    			TriMatrix M1 = new TriMatrix(3);
+    			M1.setIJ(0,0,3);
+    			M1.setIJ(0,1,12);
 
-    			M2.setIJ(1,0,-55);
-    			M2.setIJ(1,1,6);
-    			M2.setIJ(1,2,21);
-    
-    			M2.setIJ(2,1,-100);
-    			M2.setIJ(2,2,4);
-    			M2.setIJ(2,3,-33);
+    			M1.setIJ(1,0,-55);
+    			M1.setIJ(1,1,6);
+    			M1.setIJ(1,2,21);
 
-    			M2.setIJ(3,3,-329.1);
-    			M2.setIJ(3,4,3.123);
-
-    			M2.setIJ(4,3,-40.2);
-    			M2.setIJ(4,4,5.431);
-    			
-    			TriMatrix M3 = new TriMatrix(3);
-    			
-    			M3.setIJ(0,0,22);
-                M3.setIJ(0,1,-11);
+    			M1.setIJ(2,1,-40.2);
+                M1.setIJ(2,2,5.431);
                 
-    			M3.setIJ(1,0,0.11);
-    			M3.setIJ(1,1,2.3142);
-    			M3.setIJ(1,2, 4.8);
+    			
+    			TriMatrix M2 = new TriMatrix(3);
+    			
+    			M2.setIJ(0,0,22);
+                M2.setIJ(0,1,-11);
+                
+    			M2.setIJ(1,0,0.11);
+    			M2.setIJ(1,1,2.3142);
+    			M2.setIJ(1,2, 4.8);
 
-                M3.setIJ(2,1,-10);
-    			M3.setIJ(2,2,-343);
+                M2.setIJ(2,1,-10);
+    			M2.setIJ(2,2,-343);
     			
 
     			
-    			Matrix M1_ADD_M3 = M1.add(M3);
-    			Matrix M3_ADD_M1 = M3.add(M1);
-    			Matrix M1_MULT_M3 = M1.multiply(M3);
-    			Matrix M3_MULT_M1 = M3.multiply(M1);
+    			Matrix M1_ADD_M2 = M1.add(M2);
+    			Matrix M2_ADD_M1 = M2.add(M1);
+    			Matrix M1_MULT_M2 = M1.multiply(M2);
+    			Matrix M2_MULT_M1 = M2.multiply(M1);
     			Matrix XM1 = M1.multiply(5);
     			
     			
-    			System.out.println("----------------------------------------");
-    			System.out.println("M.toString() and M.determinant()");
+                System.out.println("<------------------>");
+                System.out.println("--------------------");
+    			System.out.println("M1 string and M1 d");
     			System.out.println();
     			System.out.println(M1.toString());
-    			//System.out.println(M.decomp().toString());
+
     			System.out.println("Determinant:" + M1.determinant());
-    			//System.out.println("Determinant:" + M.determinant());
-    			//System.out.println("Determinant:" + M.determinant());
-    			System.out.println("----------------------------------------");
-    			/*System.out.println("M2.toString() and M2.determinant()");
+
+                System.out.println("<------------------>");
+                System.out.println("--------------------");
+  
+    			System.out.println("M2 string and M2 d");
     			System.out.println();
     			System.out.println(M2.toString());
-    			System.out.println("Determinant:" + M2.determinant());*/
-    			System.out.println("M3.toString() and M3.determinant()");
+    			System.out.println("Determinant:" + M2.determinant());
+                System.out.println("<------------------>");
+                System.out.println("--------------------");
+
+                System.out.println("<------------------>");
+                System.out.println("--------------------");
+    			System.out.println("M1 + M2");
     			System.out.println();
-    			System.out.println(M3.toString());
-    			System.out.println("Determinant:" + M3.determinant());
-    			System.out.println("----------------------------------------");
-    /*			System.out.println("M4.toString() and M4.determinant()");
+    			System.out.println(M1_ADD_M2.toString());
     			System.out.println();
-    			System.out.println(M4.toString());
-    			System.out.println("Determinant:" + M4.determinant());*/
-    			System.out.println("----------------------------------------");
-    			System.out.println("M1 + M3");
+    			System.out.println("M2 + M1");
+    			System.out.println(M2_ADD_M1.toString());
+                System.out.println("<------------------>");
+                System.out.println("--------------------");
+    			System.out.println("M1 * M2");
     			System.out.println();
-    			System.out.println(M1_ADD_M3.toString());
+    			System.out.println(M1_MULT_M2.toString());
     			System.out.println();
-    			System.out.println("M3 + M1");
-    			System.out.println(M3_ADD_M1.toString());
-    			System.out.println("----------------------------------------");
-    			System.out.println("M1 * M3");
+    			System.out.println("M2 * M1");
     			System.out.println();
-    			System.out.println(M1_MULT_M3.toString());
-    			System.out.println();
-    			System.out.println("M3 * M1");
-    			System.out.println();
-    			System.out.println(M3_MULT_M1.toString());
+    			System.out.println(M2_MULT_M1.toString());
 
     			System.out.println("5M");
     			System.out.println();
     			System.out.println(XM1.toString());
-    			System.out.println("----------------------------------------");
-    			System.out.println("M1.random()");
+                System.out.println("<------------------>");
+                System.out.println("--------------------");
+    			System.out.println("M1 random");
     			M1.random();
     			System.out.println(M1.toString());
-    			System.out.println("----------------------------------------");
+                System.out.println("<------------------>");
+                System.out.println("--------------------");
     			TriMatrix EMPTY = new TriMatrix(2);
     			System.out.println(EMPTY.toString());
-    			//System.out.println(EMPTY.determinant());
-    			//System.out.println( ((double) -66)*((double) 12)+((double) 5)*0.99+22*0);
+
     }
 }

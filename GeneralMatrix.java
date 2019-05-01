@@ -330,7 +330,8 @@ public class GeneralMatrix extends Matrix {
 		System.out.println();
 		System.out.println(M.toString());
 		System.out.println("Det:" + M.determinant());
-		System.out.println("<------------------>");
+        System.out.println("<------------------>");
+        System.out.println("--------------------");
 		System.out.println("M2 string to M2 det ");
 		System.out.println();
 		System.out.println(M2.toString());
