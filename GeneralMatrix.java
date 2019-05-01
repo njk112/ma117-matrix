@@ -63,9 +63,7 @@ public class GeneralMatrix extends Matrix {
      */
     public double getIJ(int i, int j) {
         // You need to fill in this method.
-        if (i < 0 || j < 0 || this.m <= i || this.n <= j) {
-            throw new MatrixException("Matrix out of bounds");
-        }
+        if (i < 0 || j < 0 || this.m <= i || this.n <= j) throw new MatrixException("Matrix out of bounds");  
         return this.data[i][j];
     }
     
@@ -268,7 +266,7 @@ public class GeneralMatrix extends Matrix {
      */
     public static void main(String[] args) {
 		
-		//3 x 3 Matrix
+		//3 x 3 
 		GeneralMatrix M = new GeneralMatrix(3,3);
 		M.setIJ(0,0,6.8);
 		M.setIJ(0,1,1);
@@ -280,9 +278,7 @@ public class GeneralMatrix extends Matrix {
 		M.setIJ(2,1,-5);
 		M.setIJ(2,2,-5);
 		
-		
-		
-		//5 x 5 Matrix
+		//5 x 5
 		GeneralMatrix M2 = new GeneralMatrix(5,5);
 		M2.setIJ(0,0,6.8);
 		M2.setIJ(0,1,110);
@@ -310,17 +306,8 @@ public class GeneralMatrix extends Matrix {
 		M2.setIJ(4,3,-39.1);
 		M2.setIJ(4,4,3.12);
 		
-		GeneralMatrix M3 = new GeneralMatrix(3,3);
-		/*M.setIJ(0,0,67);
-		M.setIJ(0,1,18);
-		M.setIJ(0,2,5);
-		M.setIJ(1,0,0.2);
-		M.setIJ(1,1,-10);
-		M.setIJ(1,2,-0.19);
-		M.setIJ(2,0,48);
-		M.setIJ(2,1,100);
-		M.setIJ(2,2,-2);*/
-		
+        GeneralMatrix M3 = new GeneralMatrix(3,3);
+        		
 		M3.setIJ(0,0,12);
 		M3.setIJ(0,1,-2);
 		M3.setIJ(0,2,1.19);
@@ -337,52 +324,54 @@ public class GeneralMatrix extends Matrix {
 		Matrix M3_MULT_M = M3.multiply(M);
 		Matrix XM = M.multiply(5);
 		
-		
-		
-		System.out.println("----------------------------------------");
-		System.out.println("M.toString() and M.determinant()");
+        System.out.println("<------------------>");
+        System.out.println("--------------------");
+		System.out.println("M1 string to M det");
 		System.out.println();
 		System.out.println(M.toString());
-		System.out.println("Determinant:" + M.determinant());
-		System.out.println("----------------------------------------");
-		System.out.println("M2.toString() and M2.determinant()");
+		System.out.println("Det:" + M.determinant());
+		System.out.println("<------------------>");
+		System.out.println("M2 string to M2 det ");
 		System.out.println();
 		System.out.println(M2.toString());
-		System.out.println("Determinant:" + M2.determinant());
-		System.out.println("----------------------------------------");
-		System.out.println("M3.toString() and M3.determinant()");
+		System.out.println("Det:" + M2.determinant());
+        System.out.println("<------------------>");
+        System.out.println("--------------------");
+		System.out.println("M3 string to M3 det");
 		System.out.println();
 		System.out.println(M3.toString());
-		System.out.println("Determinant:" + M3.determinant());
-		System.out.println("----------------------------------------");
-		System.out.println("M + M3");
+		System.out.println("Det" + M3.determinant());
+        System.out.println("<------------------>");
+        System.out.println("--------------------");
+		System.out.println("M1 + M3");
 		System.out.println();
 		System.out.println(M_ADD_M3.toString());
 		System.out.println();
-		System.out.println("M3 + M");
+		System.out.println("M3 + M1");
 		System.out.println(M3_ADD_M.toString());
-		System.out.println("----------------------------------------");
-		System.out.println("M * M3");
+        System.out.println("<------------------>");
+        System.out.println("--------------------");
+		System.out.println("M1 * M3");
 		System.out.println();
 		System.out.println(M_MULT_M3.toString());
 		System.out.println();
-		System.out.println("M3 * M");
+		System.out.println("M3 * M1");
 		System.out.println();
 		System.out.println(M3_MULT_M.toString());
 		System.out.println("5M");
 		System.out.println();
 		System.out.println(XM.toString());
-		System.out.println("----------------------------------------");
+        System.out.println("<------------------>");
+        System.out.println("--------------------");
 		System.out.println("Rand");
 		M.random();
 		System.out.println(M.toString());
-		System.out.println("----------------------------------------");
-		System.out.println("Empty");
-		GeneralMatrix EMPTY = new GeneralMatrix(2,1);
-		System.out.println(EMPTY.toString());
-		//EMPTY.setIJ(0,1,12);
-		//System.out.println(EMPTY.determinant());
-		
-		
+        System.out.println("<------------------>");
+        System.out.println("--------------------");
+        System.out.println("Empty");
+        
+		GeneralMatrix E = new GeneralMatrix(2,1);
+		System.out.println(E.toString());
+
 	}
 }
