@@ -1,5 +1,5 @@
 /*
- * PROJECT III: Matrix.java -- naglis 
+ * PROJECT III: Matrix.java 
  *
  * This file contains a template for the class Matrix. Not all methods are
  * implemented. Make sure you have carefully read the project formulation

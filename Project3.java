@@ -1,5 +1,5 @@
 /*
- * PROJECT III: Project3.java -- naglis
+ * PROJECT III: Project3.java 
  *
  * This file contains a template for the class Project3. None of methods are
  * implemented. Make sure you have carefully read the project formulation

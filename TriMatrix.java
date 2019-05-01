@@ -1,5 +1,5 @@
 /*
- * PROJECT III: TriMatrix.java -- naglis
+ * PROJECT III: TriMatrix.java 
  *
  * This file contains a template for the class TriMatrix. Not all methods are
  * implemented. Make sure you have carefully read the project formulation
